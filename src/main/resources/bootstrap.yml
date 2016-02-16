@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: web-service  # Identify this application
+  cloud:
+    config:
+      uri: http://localhost:8888
+      failFast: false # If we can't talk to config server, die rather than keep trying to find it
