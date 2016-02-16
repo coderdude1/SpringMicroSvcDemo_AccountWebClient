@@ -47,10 +47,14 @@ bindings in the client app are
 
     "name" = ${spring.application.name}
     "profile" = ${spring.profiles.active} (actually Environment.getActiveProfiles())
-    "label" = "master"
+    "label" = "master" - looks like a branch to use
 
 All of them can be overridden by setting spring.cloud.config.* (where * is "name", "profile" 
 or "label"). The "label" is useful for rolling back to previous versions of configuration; 
 with the default Config Server implementation it can be a git label, branch name or commit 
 id. Label can also be provided as a comma-separated list, in which case the items in the list are tried on-by-one until one succeeds. This can be useful when working on a feature branch, for instance, when you might want to align the config label with your branch, but make it optional (e.g. spring.cloud.config.label=myfeature,develop).
  
+I have an web-server-alt.yml option in the config server, with http port 3335 to show specifying
+a profile.
+
+You can specify more than one profile, via comma sepearted list
