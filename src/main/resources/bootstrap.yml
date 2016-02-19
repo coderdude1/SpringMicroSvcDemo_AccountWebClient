@@ -5,4 +5,4 @@ spring:
     config:
       uri: http://localhost:8888
       failFast: false # If we can't talk to config server, die rather than keep trying to find it
-      profile: alt # Used to show a profile config
+      profile: alt # Used to show a profile config, comment out to show default profile

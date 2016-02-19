@@ -1,9 +1,21 @@
 # Overview
 This project demonstrates a web client that will consume a spring account microservice for
  various requestts.  It has the option to use a spring config server to retrieve it's config
- data.
+data.   This code is an evolution from the Microservices with spring blog (link below) on using 
+the eureka netflix server, as the original was one project (in itellij terms), and I wanted to add
+spring config services, which requires a bootstrap.yml change that couldn't be shared amonngst three
+webapps. 
  
- 
+# Interesting URLS
+
+1.  [Configuring It All Out" or "12-Factor App-Style Configuration with Spring"](https://spring.io/blog/2015/01/13/configuring-it-all-out-or-12-factor-app-style-configuration-with-spring)
+2.  [Spring Cloud Netflix](http://cloud.spring.io/spring-cloud-netflix/spring-cloud-netflix.html)
+3.  [Microservices With Spring](https://spring.io/blog/2015/07/14/microservices-with-spring)
+4.  [Microservice Registration and Discovery with Spring Cloud and Netflix's Eureka](https://spring.io/blog/2015/01/20/microservice-registration-and-discovery-with-spring-cloud-and-netflix-s-eureka)
+5.  [Spring cloud samples git repo](https://github.com/spring-cloud-samples/)
+6.  [Configuring it all git repo](https://github.com/joshlong/configuring-it-all-out/blob/master/cloud-client/pom.xml)
+7.  Orignal source [Microservices with spring](https://spring.io/blog/2015/07/14/microservices-with-spring)
+
 # Configuration
 SpringBoot has two places (probably more but good enough for getting set up).  These files
 reside in /resources.  The first place is boostrap.[yml, properties].  This is a place 
@@ -12,14 +24,17 @@ and this file can be specified via a -D property via an environment vairable, or
 springboot (look in WebServer.java).  The property name is 'spring.config.name', and in this app
 it is called 'web-server'. It can be a .yml or a .properties file.
  
- 
-This app is set up for both local config and using a spring config server as a demo.
+This app is set up for both local config and using 2 different spring config server as a demo.
  
 ## Local config
 Make sure everything in the /resources/bootstrap.yml are commented out.  Make sure that 
 everything in /resources/web-server.yml are uncommented.  An interesting note is the local 
 config is configured to host this app on port 3333, vs using port 3334 for the spring config
 server version.
+
+THere are two options for config when using the spring config server.  In the local bootstrap.yml
+there is a profile with a value called 'alt'.  When this is uncommented, it will ask for a different
+config, which has a default port of 3335.
  
 ## Spring Config Server
 Make sure everything in /resources/bootstrap.yml is uncommented, and everything in /resourcs/web-server.yml
