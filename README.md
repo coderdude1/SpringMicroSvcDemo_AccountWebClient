@@ -23,15 +23,15 @@ looks like for at least some of these can have a custom handler to provide app s
 [url list](http://localhost:2222).  [this is a list](https://docs.spring.io/spring-boot/docs/current/reference/html/production-ready-endpoints.html)
 of all of them (there are a lot, including these
 
-1 /beans - list all the spring beans in the context
-2 /env - list the environment values
-3 /health - list the health of the app.  there is a callback interface you can override to add custome behavior
-4 /metrics - various JVM stats
-5 /trace - Displays trace information (by default the last few HTTP requests).
-6 /info - Displays arbitrary application info.  I think this can be overridden
-7 /flyway - list flyway migrations (doesn't work, not sure why, probably needs a config or impl)
-8 /autoconfig - Displays an auto-configuration report showing all auto-configuration candidates and the reason why they ‘were’ or ‘were not’ applied.
-9 /actuator - Provides a hypermedia-based “discovery page” for the other endpoints. Requires Spring HATEOAS to be on the classpath.
+1. /beans - list all the spring beans in the context
+2. /env - list the environment values
+3. /health - list the health of the app.  there is a callback interface you can override to add custome behavior
+4. /metrics - various JVM stats
+5. /trace - Displays trace information (by default the last few HTTP requests).
+6. /info - Displays arbitrary application info.  I think this can be overridden
+7. /flyway - list flyway migrations (doesn't work, not sure why, probably needs a config or impl)
+8. /autoconfig - Displays an auto-configuration report showing all auto-configuration candidates and the reason why they ‘were’ or ‘were not’ applied.
+9. /actuator - Provides a hypermedia-based “discovery page” for the other endpoints. Requires Spring HATEOAS to be on the classpath.
 
 # Configuration
 Spring boot by default will use local configs are located in /resources.  The first place is 
