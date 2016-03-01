@@ -17,6 +17,21 @@ webapps.
 5.  [Spring cloud samples git repo](https://github.com/spring-cloud-samples/)
 6.  [Configuring it all git repo](https://github.com/joshlong/configuring-it-all-out/blob/master/cloud-client/pom.xml)
 
+# Spring Boot Web Default URL's
+Spring boot will provide a set of urls for various metrics and status checks (typically in JSON format).  These can be disabled, and it
+looks like for at least some of these can have a custom handler to provide app specific info.  go to
+[url list](http://localhost:2222).  [this is a list](https://docs.spring.io/spring-boot/docs/current/reference/html/production-ready-endpoints.html)
+of all of them (there are a lot, including these
+
+1 /beans - list all the spring beans in the context
+2 /env - list the environment values
+3 /health - list the health of the app.  there is a callback interface you can override to add custome behavior
+4 /metrics - various JVM stats
+5 /trace - Displays trace information (by default the last few HTTP requests).
+6 /info - Displays arbitrary application info.  I think this can be overridden
+7 /flyway - list flyway migrations (doesn't work, not sure why, probably needs a config or impl)
+8 /autoconfig - Displays an auto-configuration report showing all auto-configuration candidates and the reason why they ‘were’ or ‘were not’ applied.
+9 /actuator - Provides a hypermedia-based “discovery page” for the other endpoints. Requires Spring HATEOAS to be on the classpath.
 
 # Configuration
 Spring boot by default will use local configs are located in /resources.  The first place is 
