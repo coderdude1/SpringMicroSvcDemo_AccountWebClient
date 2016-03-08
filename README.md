@@ -28,7 +28,10 @@ follow.
 Make sure everything in the /resources/bootstrap.yml are commented out.  Make sure that 
 everything in /resources/web-server.yml are uncommented.  An interesting note is the local 
 config is configured to host this app on port 3333.  The 2 spring configs loaded via the spring config
-server specify different ports to show that the app is loading it's config remotely.
+server specify different ports to show that the app is loading it's config remotely.  
+
+[This is the url to see the webserver stuff](http://localhost:3333/) it includes links for demoing the microservice calls
+and the beans that provide various metrics and such
  
 ## Spring Config Server
 Make sure everything in /resources/bootstrap.yml is uncommented, and everything in /resourcs/web-server.yml
@@ -75,13 +78,14 @@ a profile.
 
 You can specify more than one profile, via comma sepearted list
 
-## How a service is wired into the client
-The rest template that is used to access the Account microservice has some cool stuff going on.  The @EnableDiscoveryClient
-will recognize the REstEmplate being autowired and injects the microservice connection instead (ie it talks to the DisvoeryServer
-and gets the url (not sure if it does it fore each request, or caches it.)
+## How a remote service is wired into the client
+The rest template that is used to access the Account microservice has some cool stuff going on.  The spring 
+cloud  ribbon artifact will inject a custom request factory that will interact with the registration service.
+You inject a service name as part of the URL http://ACCOUNT-SERVICE.  Ribbon also provides an option for
+client side load balancing (I will add an example of that later).
 
-[This is the url to see the webserver stuff](http://localhost:3333/) it includes links for demoing the microservice calls
-and the beans that provide various metrics and such
+Look in WebAccountsService.demoOnly() (put a breakpoint and observe during startup the type of connection
+factory that gets injected)
 
 ## Spring Boot Web Default URL's
 Spring boot will provide a set of urls for various metrics and status checks (typically in JSON format).  These can be disabled, and it
